@@ -1,12 +1,33 @@
-# Java Programming Exercises
+# Java OOP Advanced Practicals
 
-Contains 10 independent Java examples covering inheritance, overloading, overriding, abstraction, interfaces, custom exceptions, collections, maps, multithreading, and file handling.
+**Student:** Atharva Andre  
+**Subject:** Object-Oriented Programming Using Java
 
-Compile and run one example at a time from this folder. For example:
+## About
+This repository contains Java practical assignments, advanced OOP programming exercises, and a Library Management System mini-project.
 
-```bash
-javac 01-Inheritance.java
-java Main
-```
+## Topics Covered
+- Inheritance
+- Polymorphism
+- Abstraction
+- Interfaces
+- Encapsulation
+- Exception Handling
+- Collections Framework
+- Multithreading
+- File Handling
 
-Each example uses a package-private `Main` class so its filename can remain descriptive. Do not compile all examples together because each has its own `Main` class.
+## Repository Contents
+1. 01-Programming-Questions
+2. 02-Mini-Project-Library-Management
+3. 03-Theory-Questions
+4. 04-Add-Your-Practicals-Here
+
+## Mini Project
+Library Management System using Java OOP concepts.
+
+## Technologies Used
+- Java
+- Git
+- GitHub
+
