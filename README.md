@@ -24,7 +24,7 @@ This repository contains Java practical assignments, advanced OOP programming ex
 4. 04-Add-Your-Practicals-Here
 
 ## Mini Project
-Library Management System using Java OOP concepts.
+Daily Expense Manager using Java OOP concepts.
 
 ## Technologies Used
 - Java
