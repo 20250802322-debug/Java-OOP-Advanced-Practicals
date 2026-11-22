@@ -4,7 +4,7 @@
 **Subject:** Object-Oriented Programming Using Java
 
 ## About
-This repository contains Java practical assignments, advanced OOP programming exercises, and a Library Management System mini-project.
+This repository contains Java practical assignments, advanced OOP programming exercises, and a Daily Expense Manager mini-project.
 
 ## Topics Covered
 - Inheritance
