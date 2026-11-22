@@ -19,13 +19,10 @@ This repository contains Java practical assignments, advanced OOP programming ex
 
 ## Repository Contents
 1. 01-Programming-Questions
-2. 02-Mini-Project-Library-Management
+2. 02-Mini-Project-Expense-Manager
 3. 03-Theory-Questions
-4. 04-Add-Your-Practicals-Here
-
-## Mini Project
-Daily Expense Manager using Java OOP concepts.
-
+4. 04-Practicals
+   
 ## Technologies Used
 - Java
 - Git
