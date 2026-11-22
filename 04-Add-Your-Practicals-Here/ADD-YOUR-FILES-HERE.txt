@@ -1,2 +1,447 @@
-Copy your own teacher-assigned Java practical .java files into this folder before submission.
-Keep original filenames and test each program before pushing to GitHub.
+LAB-01
+class Student
+{
+    int rollNo;
+    String name;
+    double marks;
+
+    // Default constructor
+    Student() {
+        rollNo = 0;
+        name = "Not Assigned";
+        marks = 0.0;
+    }
+
+    // Parameterized constructor
+    Student(int r, String n, double m) {
+        rollNo = r;
+        name = n;
+        marks = m;
+    }
+
+    // Copy constructor
+    Student(Student s) {
+        rollNo = s.rollNo;
+        name = s.name;
+        marks = s.marks;
+    }
+
+    void display() {
+        System.out.println("Roll No : " + rollNo);
+        System.out.println("Name : " + name);
+        System.out.println("Marks : " + marks);
+        System.out.println(" ");
+    }
+
+    public static void main(String[] args) {
+        Student s1 = new Student(); 
+        Student s2 = new Student(101, "Sreeram", 92.5);
+        Student s3 = new Student(s2);
+
+        System.out.println("Object s1 (Default Constructor):");
+        s1.display();
+
+        System.out.println("Object s2 (Parameterized Constructor):");
+        s2.display();
+
+        System.out.println("Object s3 (Copy Constructor):");
+        s3.display();
+    }
+}
+
+LAB-02
+
+class Calculator {
+    static int count = 0; // static variable shared by all objects
+
+    // Static block - runs once when the class is loaded
+    static {
+        System.out.println("Static block executed: Calculator class loaded");
+    }
+
+    // Method overloading - same name, different parameters
+    int add(int a, int b) {
+        count++;
+        return a + b;
+    }
+
+    int add(int a, int b, int c) {
+        count++;
+        return a + b + c;
+    }
+
+    double add(double a, double b) {
+        count++;
+        return a + b;
+    }
+
+    // Static method - called without creating an object
+    static void showCount() {
+        System.out.println("Total add() calls made = " + count);
+    }
+
+    public static void main(String[] args) {
+        Calculator c = new Calculator();
+
+        System.out.println("add(10, 20) = " + c.add(10, 20));
+        System.out.println("add(10, 20, 30) = " + c.add(10, 20, 30));
+        System.out.println("add(5.5, 4.5) = " + c.add(5.5, 4.5));
+
+        Calculator.showCount(); // calling static method using class name
+    }
+}
+
+LAB-03
+public class InheritanceDemo {
+    public static void main(String[] args) {
+        System.out.println("--- Single Inheritance ---");
+
+        Student s = new Student();
+        s.setPerson("Rahul", 20);
+        s.setRoll(101);
+        s.showStudent();
+
+        System.out.println();
+
+        System.out.println("--- Multilevel Inheritance ---");
+
+        Graduate g = new Graduate();
+        g.setPerson("Priya", 21);
+        g.setRoll(202);
+        g.setCourse("B.Tech CSE");
+        g.showGraduate();
+    }
+}
+
+class Person {
+    String name;
+    int age;
+
+    void setPerson(String n, int a) {
+        name = n;
+        age = a;
+    }
+
+    void showPerson() {
+        System.out.println("Name : " + name);
+        System.out.println("Age : " + age);
+    }
+}
+
+class Student extends Person {
+    int rollNo;
+
+    void setRoll(int r) {
+        rollNo = r;
+    }
+
+    void showStudent() {
+        showPerson();
+        System.out.println("Roll : " + rollNo);
+    }
+}
+
+class Graduate extends Student {
+    String course;
+
+    void setCourse(String c) {
+        course = c;
+    }
+
+    void showGraduate() {
+        showStudent();
+        System.out.println("Course : " + course);
+    }
+}
+
+LAB-04
+public class InterfaceAbstractDemo {
+    public static void main(String[] args) {
+        Circle c = new Circle();
+        Rectangle r = new Rectangle();
+
+        c.print();
+        c.display();
+
+        System.out.println();
+
+        r.print();
+        r.display();
+    }
+}
+
+abstract class Shape {
+    abstract double area();
+
+    void display() {
+        System.out.println("Area of the shape = " + area());
+    }
+}
+
+interface Printable {
+    void print();
+}
+
+class Circle extends Shape implements Printable {
+    double radius = 5;
+
+    double area() {
+        return 3.14 * radius * radius;
+    }
+
+    public void print() {
+        System.out.println("Printing Circle with radius " + radius);
+    }
+}
+
+class Rectangle extends Shape implements Printable {
+    double length = 6, breadth = 4;
+
+    double area() {
+        return length * breadth;
+    }
+
+    public void print() {
+        System.out.println("Printing Rectangle " + length + " x " + breadth);
+    }
+}
+
+LAB-05
+class MathOperations {
+    public int add(int a, int b) {
+        return a + b;
+    }
+
+    public int multiply(int a, int b) {
+        return a * b;
+    }
+
+    public int square(int a) {
+        return a * a;
+    }
+}
+
+public class PackageDemo {
+    public static void main(String[] args) {
+        MathOperations m = new MathOperations();
+
+        System.out.println("Addition of 15 and 25 = " + m.add(15, 25));
+        System.out.println("Multiplication of 6 and 7 = " + m.multiply(6, 7));
+        System.out.println("Square of 9 = " + m.square(9));
+    }
+}
+
+LAB-06
+
+class InvalidAgeException extends Exception {
+    InvalidAgeException(String message) {
+        super(message);
+    }
+}
+
+public class Main {
+
+    static void checkAge(int age) throws InvalidAgeException {
+        if (age < 18) {
+            throw new InvalidAgeException("Age must be 18 or above");
+        }
+
+        System.out.println("Eligible for voting");
+    }
+
+    public static void main(String[] args) {
+        try {
+            checkAge(16);
+        } catch (InvalidAgeException e) {
+            System.out.println("Exception: " + e.getMessage());
+        } finally {
+            System.out.println("Program completed");
+        }
+    }
+}
+
+
+LAB-07
+exp 7: file read write operations :
+
+ 	import java.io.*;
+
+public class FileDemo {
+    public static void main(String[] args) {
+
+        try {
+            // Writing data to a file
+            FileWriter writer = new FileWriter("student.txt");
+
+            writer.write("Student Name: Rahul\n");
+            writer.write("Roll No: 101\n");
+            writer.write("Marks: 85\n");
+
+            writer.close();
+
+            System.out.println("Data written successfully.");
+
+            // Reading data from the file
+            BufferedReader reader = new BufferedReader(
+                new FileReader("student.txt")
+            );
+
+            String line;
+
+            System.out.println("\nFile Contents:");
+
+            while ((line = reader.readLine()) != null) {
+                System.out.println(line);
+            }
+
+            reader.close();
+
+        } catch (IOException e) {
+            System.out.println("File error: " + e.getMessage());
+        }
+    }
+}
+
+LAB-08
+exp 8:multithreading:
+
+class MyThread extends Thread
+{ private String threadName;
+MyThread(String threadName)
+{ this.threadName = threadName;
+}
+public void run() {
+for (int i = 1; i <= 5; i++)
+{ System.out.println(threadName + " : " + i);
+try {
+Thread.sleep(500);
+} catch (InterruptedException e)
+{ System.out.println(threadName + " interrupted");
+}
+}
+}
+}
+public class Main {
+public static void main(String[] args)
+{ MyThread t1 = new MyThread("Thread-1");
+MyThread t2 = new MyThread("Thread-2");
+t1.start();
+t2.start();
+}
+}
+
+LAB-09
+exp 9 arraylist,hashmap, iterators:
+
+import java.util.*;
+public class Main {
+public static void main(String[] args) {
+// ArrayList
+ArrayList<String> names = new ArrayList<>();
+names.add("Amit");
+names.add("Sneha");
+names.add("Rahul");
+names.add("Priya");
+System.out.println("ArrayList:");
+Iterator<String> itr = names.iterator();
+while (itr.hasNext()) {
+System.out.println(itr.next());
+}
+// HashMap
+HashMap<Integer, String> students = new HashMap<>();
+students.put(101, "Amit");
+students.put(102, "Sneha");
+students.put(103, "Rahul");
+System.out.println("\nHashMap:");
+for (Map.Entry<Integer, String> entry : students.entrySet())
+{ System.out.println(entry.getKey() + " : " + entry.getValue());
+}
+}
+}
+
+LAB-10
+exp 10: gui application:
+
+
+import javax.swing.*;
+import java.awt.*;
+import java.awt.event.*;
+public class LoginForm extends JFrame implements ActionListener
+{ JTextField username;
+JPasswordField password;
+JButton login;
+LoginForm() {
+setTitle("Login Form");
+setSize(400, 250);
+setLayout(new GridLayout(3, 2));
+setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+add(new JLabel("Username:"));
+username = new JTextField();
+add(username);
+add(new JLabel("Password:"));
+password = new JPasswordField();
+add(password);
+login = new JButton("Login");
+login.addActionListener(this);
+add(new JLabel(""));
+add(login);
+setVisible(true);
+}
+public void actionPerformed(ActionEvent e)
+{ String user = username.getText();
+String pass = new String(password.getPassword());
+if (user.equals("admin") && pass.equals("1234"))
+{ JOptionPane.showMessageDialog(this, "Login Successful");
+} else {
+JOptionPane.showMessageDialog(this, "Invalid Username or Password");
+}
+}
+public static void main(String[] args)
+{ new LoginForm();
+}
+}
+
+LAB-11
+exp 11:handling actionlistenr and mouse listener:  
+
+
+ import javax.swing.*;
+import java.awt.*;
+import java.awt.event.*;
+public class EventDemo extends JFrame implements ActionListener, MouseListener
+{ JButton button;
+JLabel label;
+EventDemo() {
+setTitle("Event Handling Demo");
+setSize(500, 300);
+setLayout(new FlowLayout());
+button = new JButton("Click Me");
+label = new JLabel("Move or click the mouse");
+button.addActionListener(this); // ActionListener on button
+addMouseListener(this); // MouseListener on window
+add(button);
+add(label);
+setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+setVisible(true);
+}
+// ActionListener method
+public void actionPerformed(ActionEvent e)
+{ label.setText("Button Clicked");
+}
+// MouseListener methods
+public void mouseClicked(MouseEvent e) {
+label.setText("Mouse Clicked at: " + e.getX() + ", " + e.getY());
+}
+public void mousePressed(MouseEvent e) { }
+public void mouseReleased(MouseEvent e) { }
+public void mouseEntered(MouseEvent e) {
+label.setText("Mouse Entered");
+}
+public void mouseExited(MouseEvent e)
+{ label.setText("Mouse Exited");
+}
+public static void main(String[] args)
+{ new EventDemo();
+}
+}
+
