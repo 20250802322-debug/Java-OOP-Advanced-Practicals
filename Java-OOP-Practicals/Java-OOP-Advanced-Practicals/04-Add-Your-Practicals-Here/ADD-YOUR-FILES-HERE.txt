@@ -1,2 +1,0 @@
-Copy your own teacher-assigned Java practical .java files into this folder before submission.
-Keep original filenames and test each program before pushing to GitHub.
